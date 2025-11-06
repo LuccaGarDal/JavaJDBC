@@ -1,66 +1,14 @@
 package academy.devdojo.ZZijdbc.dominio;
 
+import lombok.Builder;
+import lombok.Value;
+
 import java.util.Objects;
 
+@Value
+@Builder
 public class Producer {
-    private Integer id;
-    private String name;
+    Integer id;
+    String name;
 
-
-    public static final class ProducerBuilder {
-        private Integer id;
-        private String name;
-
-        private ProducerBuilder() {
-        }
-
-        public static ProducerBuilder builder() {
-            return new ProducerBuilder();
-        }
-
-        public ProducerBuilder id(Integer id) {
-            this.id = id;
-            return this;
-        }
-
-        public ProducerBuilder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Producer build() {
-            Producer producer = new Producer();
-            producer.id = this.id;
-            producer.name = this.name;
-            return producer;
-        }
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (object == null || getClass() != object.getClass()) return false;
-        Producer producer = (Producer) object;
-        return Objects.equals(id, producer.id) && Objects.equals(name, producer.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
-
-    @Override
-    public String toString() {
-        return "Producer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
 }
