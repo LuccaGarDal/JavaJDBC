@@ -3,6 +3,8 @@ package academy.devdojo.ZZijdbc.service;
 import academy.devdojo.ZZijdbc.dominio.Producer;
 import academy.devdojo.ZZijdbc.repository.ProducerRepository;
 
+import java.util.List;
+
 public class ProducerService {
     public static void save (Producer producer) {
         ProducerRepository.save(producer);
@@ -24,5 +26,9 @@ public class ProducerService {
         if (id == null || id <= 0) {
             throw new IllegalArgumentException("Invalid valur for id");
         }
+    }
+
+    public static List<Producer> findAll () {
+        return ProducerRepository.findAll();
     }
 }

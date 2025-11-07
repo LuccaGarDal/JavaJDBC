@@ -6,6 +6,8 @@ import academy.devdojo.ZZijdbc.repository.ProducerRepository;
 import academy.devdojo.ZZijdbc.service.ProducerService;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.List;
+
 @Log4j2
 public class ConnectionFactoryTest01 {
     public static void main(String[] args) {
@@ -13,7 +15,10 @@ public class ConnectionFactoryTest01 {
         Producer producer1 = Producer.builder().id(1).name("MADHOUSE").build();
 //        ProducerService.save(producer);
 //        ProducerService.delete(13);
-        ProducerService.update(producer1);
+//        ProducerService.update(producer1);
+        List<Producer> producers = ProducerService.findAll();
+        log.info("Producers found {}",producers);
+
 
 
     }
