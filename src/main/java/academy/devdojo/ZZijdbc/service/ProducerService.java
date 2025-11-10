@@ -36,5 +36,9 @@ public class ProducerService {
         return ProducerRepository.findByName(name);
     }
 
+    public static void showProducerMetadata () {
+        ProducerRepository.showProducerMetadata();
+    }
+
 
 }

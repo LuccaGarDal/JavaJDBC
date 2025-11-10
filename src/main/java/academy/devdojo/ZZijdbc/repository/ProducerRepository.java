@@ -4,10 +4,7 @@ import academy.devdojo.ZZijdbc.conn.ConnectionFactory;
 import academy.devdojo.ZZijdbc.dominio.Producer;
 import lombok.extern.log4j.Log4j2;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +51,7 @@ public class ProducerRepository {
 
     public static List<Producer> findByName (String name) {
         log.info("Finding Producers by name");
-        String sql = "SELECT * FROM producer WHERE name like '%%%s%%';".formatted(name);
+        String sql = "SELECT * FROM anime_store.producer WHERE name like '%%%s%%';".formatted(name);
         List<Producer> producers = new ArrayList<>();
         try (Connection conn = ConnectionFactory.getConnection();
              Statement stmt =  conn.createStatement();
@@ -70,6 +67,30 @@ public class ProducerRepository {
             log.error("Error while trying to find all producers",e);
         }
         return producers;
+    }
+
+    public static void showProducerMetadata () {
+        log.info("Showing Producers Metadate");
+        String sql = "SELECT * FROM anime_store.producer";
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement stmt =  conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            ResultSetMetaData rsMetaData = rs.getMetaData();
+            rs.next();
+            int columnCount = rsMetaData.getColumnCount();
+            log.info("Columns Count '{}'", columnCount);
+            for (int i = 1; i <= columnCount; i++) {
+                log.info("Table name '{}'", rsMetaData.getTableName(i));
+                log.info("Column name '{}'", rsMetaData.getColumnName(i));
+                log.info("Column size '{}'", rsMetaData.getColumnDisplaySize(i));
+                log.info("Column type '{}'", rsMetaData.getColumnTypeName(i));
+
+
+
+            }
+        } catch (SQLException e) {
+            log.error("Error while trying to find all producers",e);
+        }
     }
 
 
