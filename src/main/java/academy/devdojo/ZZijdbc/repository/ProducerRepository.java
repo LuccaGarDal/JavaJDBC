@@ -69,7 +69,7 @@ public class ProducerRepository {
         return producers;
     }
 
-    public static void showProducerMetadata () {
+    public static void showProducerMetaData() {
         log.info("Showing Producers Metadate");
         String sql = "SELECT * FROM anime_store.producer";
         try (Connection conn = ConnectionFactory.getConnection();
@@ -90,6 +90,35 @@ public class ProducerRepository {
             }
         } catch (SQLException e) {
             log.error("Error while trying to find all producers",e);
+        }
+    }
+
+    public static void showDriverMetaData() {
+        log.info("Showing Driver Metadata");
+        String sql = "SELECT * FROM anime_store.producer";
+        try (Connection conn = ConnectionFactory.getConnection()){
+            DatabaseMetaData metaData = conn.getMetaData();
+            if (metaData.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)) {
+                log.info("Supports TYPE_FORWARD_ONLY");
+                if (metaData.supportsResultSetConcurrency(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE)) {
+                    log.info("And supports CONCUR_UPDATABLE");
+                }
+            }
+            if (metaData.supportsResultSetType(ResultSet.TYPE_SCROLL_INSENSITIVE)) {
+                log.info("Supports TYPE_SCROLL_INSENSITIVE");
+                if (metaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
+                    log.info("And supports CONCUR_UPDATABLE");
+                }
+            }
+            if (metaData.supportsResultSetType(ResultSet.TYPE_SCROLL_SENSITIVE)) {
+                log.info("Supports TYPE_SCROLL_SENSITIVE");
+                if (metaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
+                    log.info("And supports CONCUR_UPDATABLE");
+                }
+            }
+
+        } catch (SQLException e) {
+            log.error("Error while trying to show driver metadata", e);
         }
     }
 

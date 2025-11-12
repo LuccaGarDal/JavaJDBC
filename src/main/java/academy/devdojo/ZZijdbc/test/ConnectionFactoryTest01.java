@@ -1,12 +1,8 @@
 package academy.devdojo.ZZijdbc.test;
 
-import academy.devdojo.ZZijdbc.conn.ConnectionFactory;
 import academy.devdojo.ZZijdbc.dominio.Producer;
-import academy.devdojo.ZZijdbc.repository.ProducerRepository;
 import academy.devdojo.ZZijdbc.service.ProducerService;
 import lombok.extern.log4j.Log4j2;
-
-import java.util.List;
 
 @Log4j2
 public class ConnectionFactoryTest01 {
@@ -21,7 +17,8 @@ public class ConnectionFactoryTest01 {
 //        log.info("Producers found {}",producers);
 //        List<Producer> producers1 = ProducerService.findAll();
 //        log.info("Producers found {}",producers1);
-        ProducerService.showProducerMetadata();
+//        ProducerService.showProducerMetaData();
+        ProducerService.showDriverMetaData();
 
 
 
