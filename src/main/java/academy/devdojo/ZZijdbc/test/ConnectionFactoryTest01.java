@@ -18,7 +18,8 @@ public class ConnectionFactoryTest01 {
 //        List<Producer> producers1 = ProducerService.findAll();
 //        log.info("Producers found {}",producers1);
 //        ProducerService.showProducerMetaData();
-        ProducerService.showDriverMetaData();
+//        ProducerService.showDriverMetaData();
+        ProducerService.showTypeScrollWorking();
 
 
 
