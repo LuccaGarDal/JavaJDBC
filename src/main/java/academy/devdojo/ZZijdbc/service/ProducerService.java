@@ -48,6 +48,10 @@ public class ProducerService {
         ProducerRepository.showTypeScrollWorking();
     }
 
+    public static List<Producer> findByNameAndUpdateToUpperCase (String name) {
+        return ProducerRepository.findByNameAndUpdateToUpperCase(name);
+    }
+
 
 
 }
