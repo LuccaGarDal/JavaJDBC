@@ -22,6 +22,11 @@ public class ProducerService {
         ProducerRepository.update(producer);
     }
 
+    public static void updatePreparedStatement (Producer producer) {
+        requireValidId(producer.getId());
+        ProducerRepository.updatePreparedStatement(producer);
+    }
+
     private static void requireValidId (Integer id) {
         if (id == null || id <= 0) {
             throw new IllegalArgumentException("Invalid valur for id");
