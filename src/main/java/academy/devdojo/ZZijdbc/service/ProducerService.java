@@ -10,7 +10,12 @@ public class ProducerService {
         ProducerRepository.save(producer);
     }
 
-    public static void delete(int id) {
+    public static void saveTransaction(List<Producer> producers) {
+        ProducerRepository.saveTransaction(producers);
+    }
+
+
+        public static void delete(int id) {
         if (id <= 0) {
             throw new IllegalArgumentException("Invalid value for id");
         }
