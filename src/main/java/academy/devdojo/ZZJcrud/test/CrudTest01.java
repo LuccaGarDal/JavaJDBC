@@ -26,6 +26,7 @@ public class CrudTest01 {
         System.out.println("Type the number of your option");
         System.out.println("1 - Search for producer");
         System.out.println("2 - Delete producer");
+        System.out.println("3 - Save producer");
         System.out.println("0 - Exit");
     }
 }
